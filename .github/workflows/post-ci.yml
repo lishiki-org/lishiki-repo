@@ -1,4 +1,4 @@
-name: Post-CI
+daname: Post-CI
 
 on:
   workflow_run:
@@ -26,7 +26,6 @@ jobs:
           run_id: ${{ env.RUN_ID }}
           name: artifact.*
           name_is_regexp: true
-          path: ${{ env.DOWNLOAD_DIR }}
           check_artifacts: true
           search_artifacts: true
           

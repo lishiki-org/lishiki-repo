@@ -31,4 +31,4 @@ jobs:
           
       - name: Cat artifact
         id: cat-artifact
-        run: cat artifact.*
+        run: cat artifact.*/*

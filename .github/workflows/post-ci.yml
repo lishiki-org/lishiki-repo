@@ -18,6 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Dump GitHub context
+        run: echo "${{ toJson(github) }}"
+
       - name: Download artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v3

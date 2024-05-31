@@ -28,6 +28,7 @@ jobs:
           name_is_regexp: true
           check_artifacts: true
           search_artifacts: true
+          allow_folks: false
           
       - name: Cat artifact
         id: cat-artifact

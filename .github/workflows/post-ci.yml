@@ -1,4 +1,4 @@
-daname: Post-CI
+name: Post-CI
 
 on:
   workflow_run:

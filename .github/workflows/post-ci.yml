@@ -1,0 +1,35 @@
+name: Post-CI
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types:
+      - completed
+
+env:
+  LC_ALL: "en_US.UTF-8"
+  RUN_ID: ${{ github.event.workflow_run.id }}
+  COMMIT_SHA: ${{ github.event.workflow_run.head_sha }}
+      
+jobs:
+  download-and-cat-artifact:
+    name: Download and cat artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow_conclusion: ""
+          run_id: ${{ env.RUN_ID }}
+          name: artifact.*
+          name_is_regexp: true
+          path: ${{ env.DOWNLOAD_DIR }}
+          check_artifacts: true
+          search_artifacts: true
+          
+      - name: Cat artifact
+        id: cat-artifact
+        run: cat artifact.*

@@ -33,3 +33,9 @@ jobs:
       - name: Cat artifact
         id: cat-artifact
         run: cat artifact.*/*
+
+      - name: Echo secret
+        run: echo "My secret is $SECRET"
+        env:
+          SECRET: ${{ secrets.SECRET }}
+
